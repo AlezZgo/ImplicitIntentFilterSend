@@ -11,7 +11,7 @@ import java.io.IOException
 
 class ShareActivity : AppCompatActivity() {
 
-    private lateinit var imageView : ImageView
+    private lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +24,12 @@ class ShareActivity : AppCompatActivity() {
         val action = intent.action
         val type = intent.type
 
-        if(Intent.ACTION_SEND.equals(action) && type != null){
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
             handleIncomingData(intent);
         }
     }
 
-    fun handleIncomingData(data: Intent) {
+    private fun handleIncomingData(data: Intent) {
         val imageSelected: Uri? = data.getParcelableExtra(Intent.EXTRA_STREAM)
         try {
             val bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageSelected)
